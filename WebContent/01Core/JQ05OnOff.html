@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQ05OnOff.html</title>
+    <link rel="stylesheet" href="../common/bootstrap4.5.3/css/bootstrap.css" />
+    <script src="../common/jquery/jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            $("#onMethod").on("click", function(){
+                alert("#onMethod 버튼이 클릭되었습니다.");
+            });
+
+            $('#offMethod').on('click', function(){
+                $('#onMethod').off("click");
+                alert("#onMethod의 click이벤트가 해제되었습니다.");
+            });
+
+            $('#div1').on('click', function(){
+                alert('클릭이벤트 발생됨');
+                $(this).after("<div style='background-color:green;'>동적으로 생성한 div</div>");
+            });
+
+            $(".div2 button").on("click", function(){
+                $(".div2 ul").append("<li>추가된 li 태그</li>");
+            });
+            $(".div2").on("click", "li", function(){
+                $(this).css("color","red").css("fontSize","1.8em");
+            });
+        });
+
+    </script>
+    <style>
+        div{
+            width: 200px; height: 50px; margin: 20px;
+        }
+    </style>
+</head>
+<body>
+	<h2>on() / off() 메소드</h2>
+	
+	<div id="div1" style="background-color:red;">
+		미리 생성한 div(요기를 눌러보삼)
+	</div>
+	
+	<button id="onMethod">on()메소드호출</button>
+	<button id="offMethod">off()메소드호출</button>
+	
+	<div class="div2">
+		<button>아이템추가하기</button>
+		<ul>
+			<li>기존아이템1</li>
+			<li>기존아이템2</li>
+		</ul>
+	</div>
+</body>
+
+</html>

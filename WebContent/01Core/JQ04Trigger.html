@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQ04Trigger.html</title>
+    <link rel="stylesheet" href="../common/bootstrap4.5.3/css/bootstrap.css" />
+    <script src="../common/jquery/jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            $('#btnClick').bind("click", function(){
+                alert('버튼을 클릭하셨습니다.');
+            });
+
+            $('#btnClick').trigger('click');
+        });
+    </script>
+</head>
+<body>
+    <h2>trigger() 메소드</h2>
+
+    <button id="btnClick">난버튼</button>
+</body>
+</html>
