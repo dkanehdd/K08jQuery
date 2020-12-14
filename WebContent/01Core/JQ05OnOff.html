@@ -8,25 +8,47 @@
     <script src="../common/jquery/jquery-3.5.1.js"></script>
     <script>
         $(document).ready(function(){
-
+            /*
+            on() : 기본사용법은 bind()와 동일하며 엘리먼트에 이벤트를
+            부여할때 사용한다.
+            off() : on()으로 부여했던 이벤트를 제거할때 사용한다.
+            */
             $("#onMethod").on("click", function(){
                 alert("#onMethod 버튼이 클릭되었습니다.");
             });
 
             $('#offMethod').on('click', function(){
+                //해당 버튼의 이벤트 제거
                 $('#onMethod').off("click");
                 alert("#onMethod의 click이벤트가 해제되었습니다.");
             });
 
+            /*
+            after() : 선택된 요소 다음에 인자로 전달되는 컨텐츠를 추가한다.
+            */
             $('#div1').on('click', function(){
                 alert('클릭이벤트 발생됨');
+                /*
+                #div1을 선택한후 on()의 실행부를 구성하고 있으므로
+                $(this)는 현재 선택된 #div1 요소를 가리킨다.
+                */
                 $(this).after("<div style='background-color:green;'>동적으로 생성한 div</div>");
             });
 
+            /*
+            append() : after()와 동일하게 선택된 요소 다음 부분에 컨텐츠를
+                추가한다.
+            css() : JS의 style속성과 동일하게 해당 요소에 CSS효과를 부여한다.
+
+            동적으로 생성한(즉, 코드상으로 존재하지 않는 엘리먼트) 요소에는
+            click이벤트를 bind()할수 없다. 하지만 on()을 통해서는 이벤트를
+            부여할 수 있다.
+            */
             $(".div2 button").on("click", function(){
                 $(".div2 ul").append("<li>추가된 li 태그</li>");
             });
             $(".div2").on("click", "li", function(){
+                //메소드 체인 형태로 텍스트의 색깔과 크기를 변경
                 $(this).css("color","red").css("fontSize","1.8em");
             });
         });

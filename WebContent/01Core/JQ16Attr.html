@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQ16Attr.html</title>
+    <link rel="stylesheet" href="../common/bootstrap4.5.3/css/bootstrap.css" />
+    <script src="../common/jquery/jquery-3.5.1.js"></script>
+    <script>
+        $(function(){
+            $('#btn1').click(function(){
+                $('#viewImg').attr('src','../images/amazon.png')
+                .attr('width','300px');
+            });
+            $('#btn2').click(function(){
+                $('#viewImg').attr('src','../images/naver.png')
+                .attr('width',function(){return '200px'});
+            });
+            $('#btn3').click(function(){
+                $('#viewImg').attr({'src':'../images/chosun.png'
+                ,'width':'400px'});
+            });
+            $('#btnDel').click(function(){
+                var attrName = $('#attrSelect option:selected').val();
+                $('#viewImg').removeAttr(attrName);
+                alert(attrName + "속성이 제거됨");
+            });
+        });
+    </script>
+</head>
+<body>
+	<h2>attr(), removeAttr() 메서드</h2>
+	
+	<div>
+		<img src="../images/amazon.png" id="viewImg" />
+	</div>
+	
+	<div>
+		<button id="btn1">amazon.png이미지로변경</button>
+		<button id="btn2">naver.png이미지로변경</button>
+		<button id="btn3">chosun.png이미지로변경</button>
+	</div>
+	
+	<div>
+		<h3>위 변경 이미지를 먼저 누른후 속성제거 버튼을 누르시오</h3>
+		<select id="attrSelect">
+			<option value="src">src속성</option>
+			<option value="width">width속성</option>
+		</select>
+		<button id="btnDel">속성제거</button>
+	</div>	
+</body>
+
+</html>
