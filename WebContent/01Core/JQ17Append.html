@@ -22,8 +22,19 @@
                     table+="</tr>";
                 }
                 table+="</table>";
-
+                /*
+                append()
+                    : 기존 컨텐츠 뒤에 새로운 내용을 추가할때 사용
+                    방식) 선택자.append(컨텐츠)
+                prependTo()
+                    :기존 컨텐츠 앞에 새로운 내용을 추가할때 사용
+                    방식 $(컨텐츠).prependTo(선택자)
+                html()
+                    :기존의 컨텐츠를 제거하고 추가하는 메소드
+                */
                 $('#appendDisplay').append(table);
+                // $(table).prependTo('#appendDisplay');
+                // $('#appendDisplay').html(table);
             });
         });
     </script>

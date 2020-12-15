@@ -8,19 +8,23 @@
     <script src="../common/jquery/jquery-3.5.1.js"></script>
     <script>
         $(function(){
-            $('input:text').val('홍길동');
-            $('input:radio').val(['남자']);
+			//페이지 로드가 끝난후 값설정하기. 주로 정보수정시 활용한다.
+            $('input:text').val('홍길순');
+			$('input:radio').val(['여자']);
+			//여러항목을 선택할때는 JSON 배열을 사용한다.
             $('#sel').val(['pol','ent']);
             $('input:checkbox').val(['트와이스','블랙핑크']);
 
+			//버튼을 눌렀을때 해당 엘리먼트의 값을 읽어온다.
             $('input:button').click(function(){
                 var msg = "";
                 msg += $('#txt').val() + "\n";
-
+				//만약 체크된 항목이 없다면 undefined이 출력된다.
                 msg += $('input:radio[name=gender]:checked').val() + "\n";
 
-                msg += $('#sel').val();
+                msg += $('#sel').val()+"\n";
 
+				msg += $('input:checkbox:checked').val();
                 alert(msg);
             });
         });
