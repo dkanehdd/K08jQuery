@@ -7,7 +7,7 @@ String gName = request.getParameter("goodsOptionName");
 String idx = request.getParameter("tableIdx");
 if(gName.equals("op01")){
 %>
-	<table class="table table-bordered" id="<%=idx%>" value="5000">
+	<table class="table table-bordered" id="<%=idx%>">
 		<tr>
 			<td>옵션명:</td>
 			<td>옵션선택1(AAA추가)</td>
@@ -18,7 +18,7 @@ if(gName.equals("op01")){
 		</tr>
 	</table>
 <%} else if(gName.equals("op02")) {%>
-	<table class="table table-bordered" id="<%=idx%>" value="7000">
+	<table class="table table-bordered" id="<%=idx%>">
 		<tr>
 			<td>옵션명:</td>
 			<td>옵션선택2(BBB추가)</td>
@@ -29,7 +29,7 @@ if(gName.equals("op01")){
 		</tr>
 	</table>
 <%} else if(gName.equals("op03")) {%>
-	<table class="table table-bordered" id="<%=idx%>" value="10000">
+	<table class="table table-bordered" id="<%=idx%>">
 		<tr>
 			<td>옵션명:</td>
 			<td>옵션선택3(CCC추가)</td>

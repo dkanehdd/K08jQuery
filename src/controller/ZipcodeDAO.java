@@ -43,7 +43,14 @@ public class ZipcodeDAO {
 	public ArrayList<String> getSido() {
 		ArrayList<String> sidoAddr = new ArrayList<String>();
 
-		String sql = "SELECT sido FROM zipcode " + " WHERE 1=1 " + " GROUP BY sido " + " ORDER BY sido ASC";
+		String sql = "SELECT distinct sido FROM zipcode " 
+				+ " WHERE 1=1 " 
+				+ " ORDER BY sido ASC";
+		
+//		String sql = "SELECT sido FROM zipcode " 
+//				+ " WHERE 1=1 " 
+//				+ " GROUP BY sido "
+//				+ " ORDER BY sido ASC";
 
 		try {
 			psmt = con.prepareStatement(sql);
@@ -59,18 +66,42 @@ public class ZipcodeDAO {
 	public ArrayList<String> getGugun(String sido) {
 		ArrayList<String> gugunAddr = new ArrayList<String>();
 
-		String sql = "SELECT sido FROM zipcode " +
+		String sql = "SELECT DISTINCT gugun FROM zipcode " +
 				" WHERE sido=? " + 
-				" ORDER BY gugun DESC";
+				" ORDER BY gugun asc";
 
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, sido);
 			rs = psmt.executeQuery();
+//			System.out.println(sql);
 			while (rs.next()) {
 				gugunAddr.add(rs.getString(1));
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
+		}
+		return gugunAddr;
+	}
+	
+	public ArrayList<String> getDong(String sido, String gugun) {
+		ArrayList<String> gugunAddr = new ArrayList<String>();
+
+		String sql = "SELECT DISTINCT dong FROM zipcode " +
+				" WHERE sido=? AND gugun=?  " + 
+				" ORDER BY dong asc";
+
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, sido);
+			psmt.setString(2, gugun);
+			rs = psmt.executeQuery();
+//			System.out.println(sql);
+			while (rs.next()) {
+				gugunAddr.add(rs.getString(1));
+			}
+		}
+		catch (Exception e) {
 		}
 		return gugunAddr;
 	}
